@@ -27,4 +27,25 @@ public class Arrays {
 		}
 		return v[r];
 	}
+
+	//EX2
+	public static boolean isPermutation(int[] a1, int l1, int r1, int[] a2, int l2, int r2){
+		if(l1-r1 != l2-r2) return false;
+		int count = 0;
+		for(int i = l1; i<=r1; i++) {
+			int s = i;
+			int a = a1[i];
+			int idx = l2;
+			while (idx <= r2) {
+				a = a2[idx];
+				if(a1[i] == a2[idx]){
+					++count;
+					a2[idx] = -1;
+					idx = r2;
+				}
+				++idx;
+			}
+		}
+		return (count == (r1-l1)+1) ? true : false;
+	}
 }
